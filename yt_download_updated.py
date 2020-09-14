@@ -11,7 +11,7 @@ import isodate
 from googleapiclient.discovery import build
 from datetime import datetime
 
-DEVELOPER_KEY = "AIzaSyB7Pl8bZRtYwDs1Wsf4Dfm7kZMP_nx4rVI"# #"AIzaSyBxDjoVYmB9-y6AcG0nWe_-G2jmbdxPzjU" #"AIzaSyCRnC11y555Az8ReJI7SztTZ8_V_fYOjlk"#"AIzaSyB7Pl8bZRtYwDs1Wsf4Dfm7kZMP_nx4rVI" #"AIzaSyB9kBsBGhFz4f1FTR-31Oz5Wf5xnlouF20"#"AIzaSyB7Pl8bZRtYwDs1Wsf4Dfm7kZMP_nx4rVI"#"AIzaSyCyNg_ahXZj5oaePErxCEp_3S2u2xsCGPw" 
+DEVELOPER_KEY = "insert_your_devkey_here"
 search_query = 'coronavirus|covid|wuhan'
 
 overall_time_range = time_range_maker('Dec 01, 2019', datetime.now())

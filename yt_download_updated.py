@@ -65,7 +65,7 @@ if not os.path.exists(output_dir):
 if not os.path.exists(n_post_dir):
     os.mkdir(n_post_dir)
 
-for time_range in overall_time_range[-3:]:
+for time_range in overall_time_range:
     if pd.to_datetime(time_range[0]).month == 12 or pd.to_datetime(time_range[0]).month == 1:
         sq = search_query + '|SARS'
     print(time_range)

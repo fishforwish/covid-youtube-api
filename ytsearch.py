@@ -13,7 +13,11 @@ YOUTUBE_API_SERVICE_NAME = "youtube"
 YOUTUBE_API_VERSION = "v3"
 
 #search for videos
-def youtube_search(q, youtube, max_results=30 ,order="viewCount", time_range = [-1, -1], pageToken = None, regionCode='ca'):
+
+
+
+def youtube_search(q, youtube, max_results=30 ,order="viewCount", time_range = [-1, -1], pageToken = None, regionCode='ca', channelId = None):
+
     if pageToken is not None:
         assert time_range != [-1, -1]
         search_response = youtube.search().list(
@@ -27,7 +31,8 @@ def youtube_search(q, youtube, max_results=30 ,order="viewCount", time_range = [
             type="video", 
             videoType="any",
             pageToken = pageToken,
-            regionCode=regionCode,
+            regionCode = regionCode,
+            channelId=channelId
           #  relevanceLanguage='en'
             ).execute() 
     elif time_range == [-1, -1]:
@@ -40,6 +45,7 @@ def youtube_search(q, youtube, max_results=30 ,order="viewCount", time_range = [
             type="video", 
             videoType="any",
             regionCode=regionCode,#'ca',
+            channelId=channelId
             #relevanceLanguage='en'
             ).execute() 
     else:
@@ -54,6 +60,7 @@ def youtube_search(q, youtube, max_results=30 ,order="viewCount", time_range = [
             type="video", 
             videoType="any",
             regionCode=regionCode, #'ca',
+            channelId=channelId
           #  relevanceLanguage='en'
             ).execute() 
 
@@ -82,6 +89,7 @@ def youtube_videos(videoIds, youtube):
         part="statistics,contentDetails"
         ).execute()
 
+    ids = []
     viewCount = []
     likeCount = []
     dislikeCount = []
@@ -110,8 +118,11 @@ def youtube_videos(videoIds, youtube):
               duration.append("N/A")
         else:
               duration.append(video_result["contentDetails"]["duration"])
+        ids.append(video_result['id'])
+
+        #ids.append(video_result[''])
         
-    return(video_response,viewCount,likeCount,dislikeCount,commentCount,favoriteCount, duration)
+    return(video_response,viewCount,likeCount,dislikeCount,commentCount,favoriteCount, duration, ids)
 
 
 #get channel name and sub count

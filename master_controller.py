@@ -11,7 +11,7 @@ import isodate
 from googleapiclient.discovery import build
 from datetime import datetime
 
-DEVELOPER_KEY = "insert_devkey_here"
+DEVELOPER_KEY = "AIzaSyAb5ls0iQZ4RKr5pWjWwC3TiQjO9zIvrms"
 search_query = 'coronavirus|covid|wuhan'
 
 overall_time_range = time_range_maker('Dec 01, 2019', 'Aug 30, 2020')#datetime.now())
@@ -26,6 +26,7 @@ def video_information_from_search(search_query, youtube, time_range=[-1, -1], pa
     search = youtube_search(search_query, youtube, order=order, max_results=max_results, time_range=time_range, pageToken = pageToken, regionCode=regionCode, channelId=channelId)
     output_df = pd.DataFrame()
     search_response,searched_channelId,videoId,title,publishedAt = search
+
     if time_range != [-1, -1]:
         output_df['codingWeek'] = [time_range[0][:10]+'-'+ time_range[1][:10] for _ in range(len(searched_channelId))]
     output_df['channelId'] = searched_channelId
